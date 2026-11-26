@@ -1,0 +1,111 @@
+{
+  "format_version": 1,
+  "app": "Simulator circuite electrice",
+  "components": [
+    {
+      "id": "GND1",
+      "type": "ground",
+      "x": 80.0,
+      "y": 360.0,
+      "params": {}
+    },
+    {
+      "id": "VM1",
+      "type": "voltmeter",
+      "x": 440.0,
+      "y": 200.0,
+      "params": {}
+    },
+    {
+      "id": "R2",
+      "type": "resistor",
+      "x": 240.0,
+      "y": 300.0,
+      "params": {
+        "resistance": 2200.0,
+        "power_max": 0.25
+      }
+    },
+    {
+      "id": "R1",
+      "type": "resistor",
+      "x": 240.0,
+      "y": 100.0,
+      "params": {
+        "resistance": 1000.0,
+        "power_max": 0.25
+      }
+    },
+    {
+      "id": "V1",
+      "type": "vsource",
+      "x": 80.0,
+      "y": 200.0,
+      "params": {
+        "voltage": 9.0
+      }
+    }
+  ],
+  "wires": [
+    {
+      "from": [
+        "VM1",
+        "-"
+      ],
+      "to": [
+        "GND1",
+        "GND"
+      ]
+    },
+    {
+      "from": [
+        "VM1",
+        "+"
+      ],
+      "to": [
+        "R1",
+        "B"
+      ]
+    },
+    {
+      "from": [
+        "V1",
+        "-"
+      ],
+      "to": [
+        "GND1",
+        "GND"
+      ]
+    },
+    {
+      "from": [
+        "R2",
+        "B"
+      ],
+      "to": [
+        "V1",
+        "-"
+      ]
+    },
+    {
+      "from": [
+        "R1",
+        "B"
+      ],
+      "to": [
+        "R2",
+        "A"
+      ]
+    },
+    {
+      "from": [
+        "V1",
+        "+"
+      ],
+      "to": [
+        "R1",
+        "A"
+      ]
+    }
+  ]
+}

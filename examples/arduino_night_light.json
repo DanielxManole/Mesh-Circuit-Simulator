@@ -1,0 +1,230 @@
+{
+  "format_version": 1,
+  "app": "Simulator circuite electrice",
+  "components": [
+    {
+      "id": "VM1",
+      "type": "voltmeter",
+      "x": 700.0,
+      "y": 280.0,
+      "params": {}
+    },
+    {
+      "id": "POT1",
+      "type": "potentiometer",
+      "x": 380.0,
+      "y": 460.0,
+      "params": {
+        "resistance": 10000.0,
+        "position": 0.6
+      }
+    },
+    {
+      "id": "R2",
+      "type": "resistor",
+      "x": 540.0,
+      "y": 380.0,
+      "params": {
+        "resistance": 10000.0,
+        "power_max": 0.25
+      }
+    },
+    {
+      "id": "LDR1",
+      "type": "photoresistor",
+      "x": 380.0,
+      "y": 280.0,
+      "params": {
+        "R_dark": 1000000.0,
+        "R_light": 1000.0,
+        "light_level": 0.3
+      }
+    },
+    {
+      "id": "LED1",
+      "type": "led",
+      "x": 540.0,
+      "y": 60.0,
+      "params": {
+        "Vf": 2.0,
+        "If_max": 0.02,
+        "color": "verde"
+      }
+    },
+    {
+      "id": "R1",
+      "type": "resistor",
+      "x": 380.0,
+      "y": 60.0,
+      "params": {
+        "resistance": 220.0,
+        "power_max": 0.25
+      }
+    },
+    {
+      "id": "GND1",
+      "type": "ground",
+      "x": 440.0,
+      "y": 540.0,
+      "params": {}
+    },
+    {
+      "id": "UNO1",
+      "type": "arduino_uno",
+      "x": 60.0,
+      "y": 60.0,
+      "params": {
+        "D2": "INPUT",
+        "D3": "INPUT",
+        "D4": "INPUT",
+        "D5": "INPUT",
+        "D6": "INPUT",
+        "D7": "INPUT",
+        "D8": "INPUT",
+        "D9": "INPUT",
+        "D10": "INPUT",
+        "D11": "INPUT",
+        "D12": "INPUT",
+        "D13": "HIGH",
+        "PWM_D3": 128,
+        "PWM_D5": 128,
+        "PWM_D6": 128,
+        "PWM_D9": 128,
+        "PWM_D10": 128,
+        "PWM_D11": 128
+      }
+    }
+  ],
+  "wires": [
+    {
+      "from": [
+        "VM1",
+        "-"
+      ],
+      "to": [
+        "GND1",
+        "GND"
+      ]
+    },
+    {
+      "from": [
+        "VM1",
+        "+"
+      ],
+      "to": [
+        "UNO1",
+        "A0"
+      ]
+    },
+    {
+      "from": [
+        "UNO1",
+        "GND"
+      ],
+      "to": [
+        "GND1",
+        "GND"
+      ]
+    },
+    {
+      "from": [
+        "POT1",
+        "W"
+      ],
+      "to": [
+        "UNO1",
+        "A1"
+      ]
+    },
+    {
+      "from": [
+        "POT1",
+        "B"
+      ],
+      "to": [
+        "GND1",
+        "GND"
+      ]
+    },
+    {
+      "from": [
+        "UNO1",
+        "5V"
+      ],
+      "to": [
+        "POT1",
+        "A"
+      ]
+    },
+    {
+      "from": [
+        "R2",
+        "B"
+      ],
+      "to": [
+        "GND1",
+        "GND"
+      ]
+    },
+    {
+      "from": [
+        "UNO1",
+        "A0"
+      ],
+      "to": [
+        "R2",
+        "A"
+      ]
+    },
+    {
+      "from": [
+        "LDR1",
+        "B"
+      ],
+      "to": [
+        "UNO1",
+        "A0"
+      ]
+    },
+    {
+      "from": [
+        "UNO1",
+        "5V"
+      ],
+      "to": [
+        "LDR1",
+        "A"
+      ]
+    },
+    {
+      "from": [
+        "LED1",
+        "catod"
+      ],
+      "to": [
+        "GND1",
+        "GND"
+      ]
+    },
+    {
+      "from": [
+        "R1",
+        "B"
+      ],
+      "to": [
+        "LED1",
+        "anod"
+      ]
+    },
+    {
+      "from": [
+        "UNO1",
+        "D13"
+      ],
+      "to": [
+        "R1",
+        "A"
+      ]
+    }
+  ]
+}
